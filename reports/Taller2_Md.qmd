@@ -1,0 +1,126 @@
+---
+title: "Taller 2"
+author: "Pablo Reyes"
+format: html
+editor: visual
+---
+
+# Introduccion
+### Problema
+Para acceder a los datos de las dos redes de estaciones, se realiza mediante una API (interfaz de programación de aplicaciones). Así, mediante programación (ej., paquete de R) es posible descargar los datos. En algunos casos el uso de las API permite la obtención de datos bien estructurados, sin embargo, no siempre sucede así. En este caso trabajaremos con dos escenarios:
+
+datos estructurados obtenidos mediante API (agrometR)
+datos desordenados obtenidos con diferentes estructuras (API AGV privada)
+El objetivo de los talleres del curso es poder importar, ordenar, transformar, visualizar y modelar estos dos set de datos.
+## Librerias
+```{r}
+library(readr)
+library(tidyr)
+library(dplyr)
+```
+
+### Cargar los datos
+```{r}
+#Datos
+agroAPI <- readRDS("C:/Rmdtos/data_raw/data_estaciones_agrometAPI.rds") 
+meta_agro <- readRDS("C:/Rmdtos/data_raw/metadata_estaciones_agrometAPI.rds")
+
+#Mascaras 
+mascara_agromet <- readRDS("C:/Rmdtos/data_raw/station_id_agromet_Pablo.rds")
+mascara_agv <- readRDS("C:/Rmdtos/data_raw/station_id_agv_Pablo.rds")
+
+#Mascaras
+
+#Sets de datos
+agv_meta <- readRDS("C:/Rmdtos/data_raw/metadata_estaciones_agvAPI(1).rds")
+api_agv <- readRDS("C:/Rmdtos/data_raw/data_agvAPI.rds")
+
+#Aplicación de máscaras
+agv_meta <- agv_meta[agv_meta$serial %in% mascara_agv,]
+api_agv_rows <- as.numeric(rownames(agv_meta[agv_meta$serial %in% mascara_agv,]))
+
+api_agv_rows <- as.numeric(rownames(agv_meta[agv_meta$tipo == "Humedad_Suelo",]))
+api_agv_rows <- api_agv_rows[!is.na(api_agv_rows)]
+data <- api_agv[c(api_agv_rows)]
+
+#Filtros
+
+#145 filas estaciones 
+#cantidad de variables
+cols <- sapply(data,ncol)
+vars <- sapply(data,nrow)
+# varibles unicas 
+vars_un<- unique(vars)
+ind785 <- vars%in%c(7,8,5)
+data785 <- data[ind785]
+# los indicadores de las estaciones que tienen 7 variables
+
+serial_est<- agv_meta$serial[ind785]
+```
+#### Utilizando R-base, readr, tidyr y lo visto de {dplyr} Debe extraer los datos de humedad de suelo a tres profundidades (30cm, 60cm y 90cm) desde el set de datos data_agvAPI.rds y utilizar el set de datos metadata_estaciones_agvAPI.rds para extaer la información necesaria de las estaciones. Debe realizarlo con todas las estaciones asignadas a usted. Debe crear un set de datos tidy (ej, tibble) que tenga las columnas de: serial, profundidad, fecha_hora, valor. Este set de datos debe contener los datos de humedad de suelo de todas las estaciones AGV asignadas a usted.
+```{r}
+#| echo: false
+data_sep <- lapply(vars_un,function(x){
+  data785[x == vars]
+})
+
+#agrupa en una lista las estaciones que tienen la misma cantidad de variables 
+#separa los valores unicos
+
+#nombres de variables 
+names <-  sapply(data_sep[[1]], purrr::pluck,1)
+
+##primer caso
+#seleccionar las tres primeras filas de profundidad
+a <- lapply(data_sep[[1]],function(l){
+  out <- l |>
+    slice(1:3) #selleciona las filas por indice o por nombre
+  out$z <- c(90,60,30)
+  return(out)
+})
+
+# desanidar lo datos
+r <- lapply(seq_along(a), function(i){
+  out <- tryCatch(
+    a[[i]] |>
+      tidyr::unnest('data') |>
+      tidyr::hoist(3,'value')|>
+      dplyr::select(2,3,5) ,
+  error = function(e) NULL)
+  
+  if (!is.null(out)) out$serial <- serial_est[i]
+  if (is.list(out)) out <- out |> unnest('value')
+  return(out)
+})
+
+# cuales son nulos
+
+data_final<- do.call(rbind,r)
+
+data_final<-  rename(data_final, Fecha_Hora = timestamp, valores = value, profundidad =  z)
+data_final
+write_rds(data_final, 'C:/Rmdtos/data_proceseed/data_procesada')
+```
+
+### El set de datos obtenido en el punto anterior lo debe ordenar de mayor a menor utilizando la función dplyr::arrange.
+```{r}
+
+mam <- dplyr::arrange(data_final,desc(valores))
+```
+
+
+### Utilice la función tidyr::separate para crear una columna de fecha y otra de hora, a partir de la columnas fecha_hora.
+
+```{r}
+h <- c('Fecha', 'Hora')
+fecha_hora <- separate(data_final,'Fecha_Hora',h,sep=10)
+```
+
+
+
+
+
+
+
+
+

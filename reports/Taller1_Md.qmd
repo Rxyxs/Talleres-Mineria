@@ -1,0 +1,124 @@
+---
+title: "Taller1_MD"
+author: "Pablo Reyes"
+format: html
+editor: visual
+---
+
+## Taller 1 Mineria de datos
+
+## Introducción
+
+Los datos con los que trabajaremos corresponden a datos obtenidos de estaciones climáticas a lo largo de Chile. Estos tienen información sobre diferentes variables como: precipitación, temperatura, velocidad del viento, dirección del viento, radiación solar, humedad relativa, humedad de suelo, entre otras. Esta información es recolectada desde estaciones ubicadas en diferentes puntos a lo largo de Chile. La posición de cada estación está definida por una coordenada geográfica (longitud y latitud). Los datos obtenidos desde estas estaciones corresponden a series temporales de las diferentes variables.
+
+-   `data_estaciones_agrometAPI.rds` : datos en las estaciones de la red [AGROMET](https://www.agromet.cl/) del `Ministerio de Agricultura` para el año 2021.
+
+-   `metadata_estaciones_agrometAPI.rds` : datos con información sobre las estaciones (ej: coordenadas, código ema, institución, region)
+
+-   `data_estaciones_agvAPI.rds` : datos en las estaciones de una red privada entre el `2022-09-01` y el `2022-09-06`
+
+-   `metadata_estaciones_agvAPI.rds` : datos con información sobre las estaciones (ej: coordenadas, serial)
+
+En este caso trabajaremos con dos escenarios:
+
+1.  datos estructurados obtenidos mediante API (agrometR)
+
+2.  datos desordenados obtenidos con diferentes estructuras (API AGV privada)
+
+## Importarción de datos
+
+```{r}
+agvAPI <- readRDS("C:/Rmdtos/data/data_agvAPI.rds")
+agrometAPI <- readRDS("C:/Rmdtos/data/data_estaciones_agrometAPI.rds") 
+meta_agromet <- readRDS("C:/Rmdtos/data/metadata_estaciones_agrometAPI.rds")
+meta_agv <- readRDS("C:/Rmdtos/data/metadata_estaciones_agvAPI(1).rds")  
+
+
+```
+
+#### Mascaras
+
+```{r}
+mascara_agromet <- readRDS("C:/Rmdtos/data/station_id_agromet_Pablo.rds")
+mascara_agv <- readRDS("C:/Rmdtos/data/station_id_agv_Pablo.rds")
+
+```
+
+#### Aplicación mascaras
+
+```{r}
+meta_agromet <- meta_agromet[meta_agromet$ema %in% mascara_agromet,]
+meta_agv <- meta_agv[meta_agv$serial %in% mascara_agv,]
+
+agrometAPI <- agrometAPI[agrometAPI$station_id %in% mascara_agromet,]
+agvAPI_rows <- as.numeric(rownames(meta_agv[meta_agv$serial %in% mascara_agv,]))
+agvAPI <- agvAPI[c(agvAPI_rows)]
+```
+
+## Codigo
+
+#### 1)Reconocer los tipos y estructuras de datos en los que están almacenados los datos de `agromet` y `AGV` en R (ej: data.frame, lista, matrix, character, etc). Entregar una descripción para los dos set de datos.
+
+```{r}
+class(meta_agromet)
+class(meta_agv)
+class(agrometAPI)
+class(agvAPI)
+
+```
+
+### 
+
+#### 2)Para los set de datos `data_agvAPI` cree una función `apply` (`apply`,`lapply`,`sapply`) que permita determinar la cantidad de variables que tiene cada estación. Cree un `data.frame` con una columna indicando el serial de cada estación y otra columna con el número de variables para cada estación.
+
+```{r}
+2 * sapply(agvAPI, dim.data.frame)
+
+```
+
+#### 3)Para los datos `data_agrometAPI` cree una función `apply` (`apply`,`lapply`,`sapply`) que permita calcular la suma diaria de precipitación y los promedios diarios de temperatura (máxima, mínima, promedio).
+
+```{r}
+class(agrometAPI)
+apply(agrometAPI,agrometAPI$precipitacion_horaria, sum)
+apply(agrometAPI, agrometAPI$temp_promedio_aire, mean)
+apply(agrometAPI, agrometAPI$temp_minima, mean)
+apply(agrometAPI, agrometAPI$temp_maxima, mean)
+```
+
+#### 4)A partir del set de datos de `agromet` debe crear un set de datos `data.frame` de tipo `tibble` para todas las estaciones, con variable de precipitación acumulada diaria, temperatura promedio, maxíma y mínima diaria.
+
+```{r}
+
+```
+
+#### 6)Entregar información resumida de los datos como: variables, cantidad de `NAs`, resumen estadístico (min, max, 1er quartil, 3er quartil).
+
+```{r}
+summary(tibble_tagrometAPI)
+sum(is.na(agrometAPI))
+
+summary(agvAPI)
+sum(is.na(agvAPI))
+
+
+
+```
+
+#### 7)Buscar información sobre los formatos de datos parquet y arrow, y el paquete de R {arrow}.
+
+## **Apache Arrow**
+
+Apache Arrow es una biblioteca, disponible para múltiples lenguajes de programación, que proporciona estructuras de datos en columnas para su uso en aplicaciones de análisis de datos. El uso de estructuras tabulares ofrece ciertas ventajas frente a almacenar los datos en filas. Permitiendo un acceso aleatorio mucho más rápido a cada una de las celdas ya que estas se encuentran al lado de la anterior. Lo que hace más eficiente las tareas de iteración sobre los elementos de una columna.
+
+Pero, si Apache Arrow es una biblioteca de software ¿qué son los archivos Arrow? En Apache Arrow también se define un protocolo binario de serialización para empaquetar colecciones de matrices Arrow y emplearlas para la comunicación entre procesos. Pudiéndose usar este tanto para enviar los datos a otro proceso como para almacenar en disco y posteriormente importar en memoria en otro sistema.
+
+## **Parquet**
+
+Por otro lado, Parquet es un formato de archivo en columnas para la serialización de datos. Al leer un archivo Parquet es necesario descomprimir y decodificar su contenido en algún tipo de estructura de datos en memoria. No proporcionando, a diferencia de Apache Arrow, una estructura de datos para almacenar esta en memoria, sino que el contenido del archivo ha de ser traducido a una nativa del lenguaje, como puede ser el caso de los objetos DataFrame.
+
+https://www.analyticslane.com/2021/12/24/diferencias-entre-apache-arrow-y-parquet/
+
+\
+
+\

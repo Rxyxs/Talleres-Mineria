@@ -1,0 +1,707 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.0.36">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="author" content="Pablo Reyes">
+
+<title>Taller 3</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+span.underline{text-decoration: underline;}
+div.column{display: inline-block; vertical-align: top; width: 50%;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+
+<script src="taller3_files/libs/clipboard/clipboard.min.js"></script>
+<script src="taller3_files/libs/quarto-html/quarto.js"></script>
+<script src="taller3_files/libs/quarto-html/popper.min.js"></script>
+<script src="taller3_files/libs/quarto-html/tippy.umd.min.js"></script>
+<script src="taller3_files/libs/quarto-html/anchor.min.js"></script>
+<link href="taller3_files/libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="taller3_files/libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="taller3_files/libs/bootstrap/bootstrap.min.js"></script>
+<link href="taller3_files/libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="taller3_files/libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+
+
+</head>
+
+<body class="fullcontent">
+
+<div id="quarto-content" class="page-columns page-rows-contents page-layout-article">
+
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Taller 3</h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    <div>
+    <div class="quarto-title-meta-heading">Author</div>
+    <div class="quarto-title-meta-contents">
+             <p>Pablo Reyes </p>
+          </div>
+  </div>
+    
+    
+  </div>
+  
+
+</header>
+
+<section id="taller-3" class="level1">
+<h1>Taller 3</h1>
+<section id="librerias" class="level2">
+<h2 class="anchored" data-anchor-id="librerias">Librerias</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(readr)</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyr)</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>
+Attaching package: 'dplyr'</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>The following objects are masked from 'package:stats':
+
+    filter, lag</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>The following objects are masked from 'package:base':
+
+    intersect, setdiff, setequal, union</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(lubridate)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning: package 'lubridate' was built under R version 4.2.2</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>
+Attaching package: 'lubridate'</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>The following objects are masked from 'package:base':
+
+    date, intersect, setdiff, union</code></pre>
+</div>
+</div>
+</section>
+<section id="cargar-los-datos" class="level2">
+<h2 class="anchored" data-anchor-id="cargar-los-datos">Cargar los datos</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>meta_agromet <span class="ot">&lt;-</span> <span class="fu">readRDS</span>(<span class="st">"C:/Rmdtos/data_raw/metadata_estaciones_agrometAPI.rds"</span>)</span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>meta_agv <span class="ot">&lt;-</span> <span class="fu">readRDS</span>(<span class="st">"C:/Rmdtos/data_raw/metadata_estaciones_agvAPI(1).rds"</span>)</span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>station_agromet <span class="ot">&lt;-</span> <span class="fu">readRDS</span>(<span class="st">"C:/Rmdtos/data_raw/station_id_agromet_Pablo.rds"</span>)</span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a>station_agv <span class="ot">&lt;-</span> <span class="fu">readRDS</span>(<span class="st">"C:/Rmdtos/data_raw/station_id_agv_Pablo.rds"</span>)</span>
+<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a>data_estaciones_agvAPI <span class="ot">&lt;-</span> <span class="fu">readRDS</span>(<span class="st">"C:/Rmdtos/data_raw/data_agvAPI.rds"</span>)</span>
+<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a>data_estaciones_agrometAPI <span class="ot">&lt;-</span> <span class="fu">readRDS</span>(<span class="st">"C:/Rmdtos/data_raw/data_estaciones_agrometAPI.rds"</span>)</span>
+<span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-8"><a href="#cb9-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-9"><a href="#cb9-9" aria-hidden="true" tabindex="-1"></a>met_agromet <span class="ot">&lt;-</span> meta_agromet[meta_agromet<span class="sc">$</span>ema <span class="sc">%in%</span> station_agromet,]</span>
+<span id="cb9-10"><a href="#cb9-10" aria-hidden="true" tabindex="-1"></a>meta_agv <span class="ot">&lt;-</span> meta_agv[meta_agv<span class="sc">$</span>serial <span class="sc">%in%</span> station_agv,]</span>
+<span id="cb9-11"><a href="#cb9-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-12"><a href="#cb9-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-13"><a href="#cb9-13" aria-hidden="true" tabindex="-1"></a>data_agro <span class="ot">&lt;-</span> data_estaciones_agrometAPI[data_estaciones_agrometAPI<span class="sc">$</span>station_id <span class="sc">%in%</span> station_agromet,]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>##1.Ejercicios {readr} y {tidyr}</p>
+<section id="con-los-datos-de-agromet-cree-datos-anidados-por-estación-station_id-considerando-todas-las-variables-climáticas." class="level3">
+<h3 class="anchored" data-anchor-id="con-los-datos-de-agromet-cree-datos-anidados-por-estación-station_id-considerando-todas-las-variables-climáticas.">1.con los datos de agromet cree datos anidados por estación (station_id) considerando todas las variables climáticas.</h3>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="do">##data_estaciones_agrometAPI</span></span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>data_nest <span class="ot">&lt;-</span> data_agro <span class="sc">|&gt;</span></span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">nest</span>(<span class="at">data=</span><span class="dv">2</span><span class="sc">:</span><span class="dv">13</span>)</span>
+<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a>data_nest <span class="sc">|&gt;</span> <span class="fu">glimpse</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Rows: 137
+Columns: 2
+$ station_id &lt;dbl&gt; 2, 4, 7, 9, 10, 11, 12, 15, 20, 26, 31, 38, 39, 40, 41, 49,…
+$ data       &lt;list&gt; [&lt;tbl_df[8736 x 12]&gt;], [&lt;tbl_df[8736 x 12]&gt;], [&lt;tbl_df[873…</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="do">##guarda todos los datos en data y solo deja por fuera la station id que es po rla que agrupa</span></span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a><span class="do">##otra opcion</span></span>
+<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a>data_nest2 <span class="ot">&lt;-</span> data_agro <span class="sc">|&gt;</span></span>
+<span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span> (station_id)<span class="sc">|&gt;</span></span>
+<span id="cb12-6"><a href="#cb12-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">nest</span>()</span>
+<span id="cb12-7"><a href="#cb12-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-8"><a href="#cb12-8" aria-hidden="true" tabindex="-1"></a>data_nest2 <span class="sc">|&gt;</span> <span class="fu">glimpse</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Rows: 137
+Columns: 2
+Groups: station_id [137]
+$ station_id &lt;dbl&gt; 2, 4, 7, 9, 10, 11, 12, 15, 20, 26, 31, 38, 39, 40, 41, 49,…
+$ data       &lt;list&gt; [&lt;tbl_df[8736 x 12]&gt;], [&lt;tbl_df[8736 x 12]&gt;], [&lt;tbl_df[873…</code></pre>
+</div>
+</div>
+</section>
+<section id="de-la-data-anidada-extraiga-el-primer-valor-de-la-variable-humedad-relativa-de-la-estación-que-se-encuetra-en-la-posición-5." class="level3">
+<h3 class="anchored" data-anchor-id="de-la-data-anidada-extraiga-el-primer-valor-de-la-variable-humedad-relativa-de-la-estación-que-se-encuetra-en-la-posición-5.">2.de la data anidada extraiga el primer valor de la variable humedad relativa de la estación que se encuetra en la posición 5.</h3>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>data_nest<span class="sc">$</span>data[<span class="dv">5</span>][[<span class="dv">1</span>]][<span class="dv">1</span>,<span class="dv">4</span>] <span class="sc">|&gt;</span> </span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">print</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 1 × 1
+  humed_rel_promedio
+               &lt;dbl&gt;
+1               68.8</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>  purrr<span class="sc">::</span><span class="fu">pluck</span>(data_nest<span class="sc">$</span>data, <span class="dv">5</span>,<span class="dv">4</span>,<span class="dv">1</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 68.8</code></pre>
+</div>
+</div>
+</section>
+<section id="agregue-la-variable-precipitación-extraida-de-la-columna-anidada-como-una-variable-adicional" class="level3">
+<h3 class="anchored" data-anchor-id="agregue-la-variable-precipitación-extraida-de-la-columna-anidada-como-una-variable-adicional">3.agregue la variable precipitación extraida de la columna anidada como una variable adicional</h3>
+</section>
+<section id="aplane-desanide-la-variable-de-precipitación-anterior." class="level3">
+<h3 class="anchored" data-anchor-id="aplane-desanide-la-variable-de-precipitación-anterior.">4.aplane (desanide) la variable de precipitación anterior.</h3>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>data_nest <span class="sc">|&gt;</span> </span>
+<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">hoist</span>(data, <span class="st">'precipitacion_horaria'</span>) <span class="sc">|&gt;</span></span>
+<span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">unnest</span>(precipitacion_horaria) <span class="sc">|&gt;</span> <span class="co">#4</span></span>
+<span id="cb18-4"><a href="#cb18-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(<span class="sc">-</span>data)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 1,196,832 × 2
+   station_id precipitacion_horaria
+        &lt;dbl&gt;                 &lt;dbl&gt;
+ 1          2                     0
+ 2          2                     0
+ 3          2                     0
+ 4          2                     0
+ 5          2                     0
+ 6          2                     0
+ 7          2                     0
+ 8          2                     0
+ 9          2                     0
+10          2                     0
+# … with 1,196,822 more rows</code></pre>
+</div>
+</div>
+</section>
+<section id="haga-explicitos-los-valores-na-implicitos-de-precipitación.-comparé-la-cantidad-de-observaciones-con-la-data-original." class="level3">
+<h3 class="anchored" data-anchor-id="haga-explicitos-los-valores-na-implicitos-de-precipitación.-comparé-la-cantidad-de-observaciones-con-la-data-original.">5. Haga explicitos los valores NA implicitos de precipitación. Comparé la cantidad de observaciones con la data original.</h3>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a>data_agro <span class="sc">|&gt;</span></span>
+<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(station_id, fecha_hora, precipitacion_horaria) <span class="sc">|&gt;</span></span>
+<span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">complete</span>(fecha_hora, station_id) <span class="sc">|&gt;</span></span>
+<span id="cb20-4"><a href="#cb20-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">glimpse</span>() </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Rows: 1,196,832
+Columns: 3
+$ fecha_hora            &lt;dttm&gt; 2021-01-01 03:00:00, 2021-01-01 03:00:00, 2021-…
+$ station_id            &lt;dbl&gt; 2, 4, 7, 9, 10, 11, 12, 15, 20, 26, 31, 38, 39, …
+$ precipitacion_horaria &lt;dbl&gt; 0, 0, NA, 0, 0, 0, 0, NA, 0, 0, 0, 0, 0, 0, 0, 0…</code></pre>
+</div>
+</div>
+</section>
+<section id="relicé-el-rellenado-de-los-valores-na-de-precipitación-horaria-tomando-el-valor-anterior." class="level3">
+<h3 class="anchored" data-anchor-id="relicé-el-rellenado-de-los-valores-na-de-precipitación-horaria-tomando-el-valor-anterior.">6.relicé el rellenado de los valores NA de precipitación horaria tomando el valor anterior.</h3>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a>data_agro <span class="sc">|&gt;</span></span>
+<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">fill</span>(precipitacion_horaria, <span class="at">.direction =</span> <span class="st">"down"</span>) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 1,196,832 × 13
+   station…¹ fecha_hora          temp_…² preci…³ humed…⁴ presi…⁵ radia…⁶ veloc…⁷
+       &lt;dbl&gt; &lt;dttm&gt;                &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;
+ 1         2 2021-01-01 03:00:00    20.5       0    66     1012.       0     0  
+ 2         2 2021-01-01 04:00:00    20.4       0    66     1012.       0     0.4
+ 3         2 2021-01-01 05:00:00    20.4       0    65.5   1012.       0     0.4
+ 4         2 2021-01-01 06:00:00    20.4       0    64.5   1012.       0     0  
+ 5         2 2021-01-01 07:00:00    20.8       0    62.8   1013.      39     0  
+ 6         2 2021-01-01 08:00:00    21.5       0    61.2   1013.     156     0  
+ 7         2 2021-01-01 09:00:00    22.4       0    58.8   1013.     417     2.2
+ 8         2 2021-01-01 10:00:00    23.8       0    56     1013.     728     3.1
+ 9         2 2021-01-01 11:00:00    24.8       0    52.8   1013.     868     5.4
+10         2 2021-01-01 12:00:00    25.4       0    50     1012.     944     5.4
+# … with 1,196,822 more rows, 5 more variables: temp_minima &lt;dbl&gt;,
+#   temp_maxima &lt;dbl&gt;, direccion_del_viento &lt;dbl&gt;, grados_dia &lt;dbl&gt;,
+#   horas_frio &lt;dbl&gt;, and abbreviated variable names ¹​station_id,
+#   ²​temp_promedio_aire, ³​precipitacion_horaria, ⁴​humed_rel_promedio,
+#   ⁵​presion_atmosferica, ⁶​radiacion_solar_max, ⁷​veloc_max_viento</code></pre>
+</div>
+</div>
+</section>
+</section>
+<section id="ejercicios-dplyr-parte-1" class="level2">
+<h2 class="anchored" data-anchor-id="ejercicios-dplyr-parte-1">2 Ejercicios {dplyr} (parte 1)</h2>
+<section id="filtrar-los-datos-para-los-meses-de-mayo-a-julio-en-las-estaciones-asignadas." class="level3">
+<h3 class="anchored" data-anchor-id="filtrar-los-datos-para-los-meses-de-mayo-a-julio-en-las-estaciones-asignadas.">2.Filtrar los datos para los meses de Mayo a Julio en las estaciones asignadas.</h3>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a>data_agro <span class="sc">|&gt;</span></span>
+<span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">fecha_hora  =</span> <span class="fu">as_date</span>(data_agro<span class="sc">$</span>fecha_hora))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 1,196,832 × 13
+   station_id fecha_hora temp_…¹ preci…² humed…³ presi…⁴ radia…⁵ veloc…⁶ temp_…⁷
+        &lt;dbl&gt; &lt;date&gt;       &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;
+ 1          2 2021-01-01    20.5       0    66     1012.       0     0      20.5
+ 2          2 2021-01-01    20.4       0    66     1012.       0     0.4    20.3
+ 3          2 2021-01-01    20.4       0    65.5   1012.       0     0.4    20.4
+ 4          2 2021-01-01    20.4       0    64.5   1012.       0     0      20.4
+ 5          2 2021-01-01    20.8       0    62.8   1013.      39     0      20.6
+ 6          2 2021-01-01    21.5       0    61.2   1013.     156     0      21.1
+ 7          2 2021-01-01    22.4       0    58.8   1013.     417     2.2    22.2
+ 8          2 2021-01-01    23.8       0    56     1013.     728     3.1    23.3
+ 9          2 2021-01-01    24.8       0    52.8   1013.     868     5.4    24.6
+10          2 2021-01-01    25.4       0    50     1012.     944     5.4    25.4
+# … with 1,196,822 more rows, 4 more variables: temp_maxima &lt;dbl&gt;,
+#   direccion_del_viento &lt;dbl&gt;, grados_dia &lt;dbl&gt;, horas_frio &lt;dbl&gt;, and
+#   abbreviated variable names ¹​temp_promedio_aire, ²​precipitacion_horaria,
+#   ³​humed_rel_promedio, ⁴​presion_atmosferica, ⁵​radiacion_solar_max,
+#   ⁶​veloc_max_viento, ⁷​temp_minima</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(data_agro,fecha_hora  <span class="sc">&gt;=</span> <span class="fu">ymd</span>(<span class="dv">20210501</span>) <span class="sc">&amp;</span> fecha_hora <span class="sc">&lt;</span> <span class="fu">ymd</span>(<span class="dv">20210801</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 302,496 × 13
+   station…¹ fecha_hora          temp_…² preci…³ humed…⁴ presi…⁵ radia…⁶ veloc…⁷
+       &lt;dbl&gt; &lt;dttm&gt;                &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;
+ 1         2 2021-05-01 00:00:00    14.4       0    66.2   1018.       0     0.9
+ 2         2 2021-05-01 01:00:00    13.9       0    66.8   1018.       0     0.9
+ 3         2 2021-05-01 02:00:00    13.8       0    66.5   1017.       0     0.9
+ 4         2 2021-05-01 03:00:00    13.5       0    67     1016.       0     1.8
+ 5         2 2021-05-01 04:00:00    13.4       0    67     1016.       0     0.9
+ 6         2 2021-05-01 05:00:00    12.4       0    68.5   1016.       0     0.9
+ 7         2 2021-05-01 06:00:00    12.5       0    69.8   1017.       0     0.9
+ 8         2 2021-05-01 07:00:00    14.6       0    67.5   1017.      44     0.9
+ 9         2 2021-05-01 08:00:00    16.5       0    63.5   1018.     105     0.4
+10         2 2021-05-01 09:00:00    18.3       0    59.8   1018      236     0.9
+# … with 302,486 more rows, 5 more variables: temp_minima &lt;dbl&gt;,
+#   temp_maxima &lt;dbl&gt;, direccion_del_viento &lt;dbl&gt;, grados_dia &lt;dbl&gt;,
+#   horas_frio &lt;dbl&gt;, and abbreviated variable names ¹​station_id,
+#   ²​temp_promedio_aire, ³​precipitacion_horaria, ⁴​humed_rel_promedio,
+#   ⁵​presion_atmosferica, ⁶​radiacion_solar_max, ⁷​veloc_max_viento</code></pre>
+</div>
+</div>
+</section>
+<section id="tome-una-muestra-de-1000-filas-de-forma-aleatoria-sin-reemplazo." class="level3">
+<h3 class="anchored" data-anchor-id="tome-una-muestra-de-1000-filas-de-forma-aleatoria-sin-reemplazo.">3.Tome una muestra de 1000 filas de forma aleatoria sin reemplazo.</h3>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a><span class="fu">slice_sample</span>(data_agro, <span class="at">n=</span><span class="dv">1000</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 1,000 × 13
+   station…¹ fecha_hora          temp_…² preci…³ humed…⁴ presi…⁵ radia…⁶ veloc…⁷
+       &lt;dbl&gt; &lt;dttm&gt;                &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;
+ 1       289 2021-07-22 03:00:00    -0.8     0      96.9    994.     0       1.6
+ 2       286 2021-07-06 14:00:00     9.7     0      84.8   1008    257.      3.5
+ 3       638 2021-04-16 08:00:00    11.1     0      94.4   1014    100.      1.3
+ 4       159 2021-05-19 16:00:00    17.2     0      51.6    960    256.      0.6
+ 5       333 2021-04-04 19:00:00    10.3     0      50.6    752.     0       0.3
+ 6       252 2021-10-03 00:00:00     6.5     0      67.4      0      0.1     3.6
+ 7       507 2021-04-15 04:00:00     3.4     0      97.5   1014.     0       0  
+ 8        39 2021-06-06 12:00:00    17       0      50.5   1018.   587       1.8
+ 9       418 2021-01-12 09:00:00    17       0      52.6   1018    542       2  
+10       667 2021-01-30 19:00:00    16.8     0.1    96.4      0     38.2     0.1
+# … with 990 more rows, 5 more variables: temp_minima &lt;dbl&gt;, temp_maxima &lt;dbl&gt;,
+#   direccion_del_viento &lt;dbl&gt;, grados_dia &lt;dbl&gt;, horas_frio &lt;dbl&gt;, and
+#   abbreviated variable names ¹​station_id, ²​temp_promedio_aire,
+#   ³​precipitacion_horaria, ⁴​humed_rel_promedio, ⁵​presion_atmosferica,
+#   ⁶​radiacion_solar_max, ⁷​veloc_max_viento</code></pre>
+</div>
+</div>
+</section>
+<section id="para-cada-estación-seleccione-los-valores-máximos-de-precipitación-horaria." class="level3">
+<h3 class="anchored" data-anchor-id="para-cada-estación-seleccione-los-valores-máximos-de-precipitación-horaria.">4.Para cada estación seleccione los valores máximos de precipitación horaria.</h3>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb30"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a>data_agro <span class="sc">|&gt;</span></span>
+<span id="cb30-2"><a href="#cb30-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(station_id) <span class="sc">|&gt;</span></span>
+<span id="cb30-3"><a href="#cb30-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">arrange</span>(<span class="fu">desc</span>(precipitacion_horaria)) <span class="sc">|&gt;</span></span>
+<span id="cb30-4"><a href="#cb30-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">slice</span>(<span class="at">n=</span><span class="dv">1</span>) <span class="sc">|&gt;</span></span>
+<span id="cb30-5"><a href="#cb30-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(station_id,fecha_hora,precipitacion_horaria)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 137 × 3
+# Groups:   station_id [137]
+   station_id fecha_hora          precipitacion_horaria
+        &lt;dbl&gt; &lt;dttm&gt;                              &lt;dbl&gt;
+ 1          2 2021-01-14 23:00:00                   0.3
+ 2          4 2021-08-24 23:00:00                   3.6
+ 3          7 2021-01-01 03:00:00                  NA  
+ 4          9 2021-08-24 21:00:00                   2.5
+ 5         10 2021-06-23 13:00:00                   3.1
+ 6         11 2021-06-23 13:00:00                   1  
+ 7         12 2021-06-26 01:00:00                   2  
+ 8         15 2021-06-23 11:00:00                   2.6
+ 9         20 2021-08-19 00:00:00                   3.8
+10         26 2021-08-24 20:00:00                   6.8
+# … with 127 more rows</code></pre>
+</div>
+</div>
+</section>
+<section id="seleccione-las-columnas-que-tienen-temperatura-además-de-station_id-y-fecha_hora." class="level3">
+<h3 class="anchored" data-anchor-id="seleccione-las-columnas-que-tienen-temperatura-además-de-station_id-y-fecha_hora.">5. Seleccione las columnas que tienen temperatura, además de station_id y fecha_hora.</h3>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb32"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a>data_agro <span class="sc">|&gt;</span></span>
+<span id="cb32-2"><a href="#cb32-2" aria-hidden="true" tabindex="-1"></a><span class="fu">select</span>(<span class="fu">contains</span>(<span class="st">'temp'</span>),station_id, fecha_hora)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 1,196,832 × 5
+   temp_promedio_aire temp_minima temp_maxima station_id fecha_hora         
+                &lt;dbl&gt;       &lt;dbl&gt;       &lt;dbl&gt;      &lt;dbl&gt; &lt;dttm&gt;             
+ 1               20.5        20.5        20.6          2 2021-01-01 03:00:00
+ 2               20.4        20.3        20.5          2 2021-01-01 04:00:00
+ 3               20.4        20.4        20.4          2 2021-01-01 05:00:00
+ 4               20.4        20.4        20.6          2 2021-01-01 06:00:00
+ 5               20.8        20.6        20.9          2 2021-01-01 07:00:00
+ 6               21.5        21.1        21.9          2 2021-01-01 08:00:00
+ 7               22.4        22.2        22.7          2 2021-01-01 09:00:00
+ 8               23.8        23.3        24.5          2 2021-01-01 10:00:00
+ 9               24.8        24.6        25            2 2021-01-01 11:00:00
+10               25.4        25.4        25.5          2 2021-01-01 12:00:00
+# … with 1,196,822 more rows</code></pre>
+</div>
+</div>
+</section>
+<section id="seleccione-las-columnas-que-tienen-valores-no-numéricos." class="level3">
+<h3 class="anchored" data-anchor-id="seleccione-las-columnas-que-tienen-valores-no-numéricos.">6. Seleccione las columnas que tienen valores no numéricos.</h3>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb34"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a>data_agro<span class="sc">|&gt;</span></span>
+<span id="cb34-2"><a href="#cb34-2" aria-hidden="true" tabindex="-1"></a><span class="fu">select</span>(<span class="fu">where</span>(\(x) <span class="sc">!</span><span class="fu">is.numeric</span>(x))) <span class="sc">|&gt;</span> </span>
+<span id="cb34-3"><a href="#cb34-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">glimpse</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Rows: 1,196,832
+Columns: 1
+$ fecha_hora &lt;dttm&gt; 2021-01-01 03:00:00, 2021-01-01 04:00:00, 2021-01-01 05:00…</code></pre>
+</div>
+</div>
+</section>
+</section>
+<section id="ejercicios-dplyr-parte-2" class="level2">
+<h2 class="anchored" data-anchor-id="ejercicios-dplyr-parte-2">3 Ejercicios {dplyr} (parte 2)</h2>
+<p>###1 .Agrupe los datos de las climáticos de agromet por estación (group_by)</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb36"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a>data_agro <span class="sc">|&gt;</span></span>
+<span id="cb36-2"><a href="#cb36-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(station_id)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 1,196,832 × 13
+# Groups:   station_id [137]
+   station…¹ fecha_hora          temp_…² preci…³ humed…⁴ presi…⁵ radia…⁶ veloc…⁷
+       &lt;dbl&gt; &lt;dttm&gt;                &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;
+ 1         2 2021-01-01 03:00:00    20.5       0    66     1012.       0     0  
+ 2         2 2021-01-01 04:00:00    20.4       0    66     1012.       0     0.4
+ 3         2 2021-01-01 05:00:00    20.4       0    65.5   1012.       0     0.4
+ 4         2 2021-01-01 06:00:00    20.4       0    64.5   1012.       0     0  
+ 5         2 2021-01-01 07:00:00    20.8       0    62.8   1013.      39     0  
+ 6         2 2021-01-01 08:00:00    21.5       0    61.2   1013.     156     0  
+ 7         2 2021-01-01 09:00:00    22.4       0    58.8   1013.     417     2.2
+ 8         2 2021-01-01 10:00:00    23.8       0    56     1013.     728     3.1
+ 9         2 2021-01-01 11:00:00    24.8       0    52.8   1013.     868     5.4
+10         2 2021-01-01 12:00:00    25.4       0    50     1012.     944     5.4
+# … with 1,196,822 more rows, 5 more variables: temp_minima &lt;dbl&gt;,
+#   temp_maxima &lt;dbl&gt;, direccion_del_viento &lt;dbl&gt;, grados_dia &lt;dbl&gt;,
+#   horas_frio &lt;dbl&gt;, and abbreviated variable names ¹​station_id,
+#   ²​temp_promedio_aire, ³​precipitacion_horaria, ⁴​humed_rel_promedio,
+#   ⁵​presion_atmosferica, ⁶​radiacion_solar_max, ⁷​veloc_max_viento</code></pre>
+</div>
+</div>
+<section id="haga-un-sumarizado-de-promedio-mensual-de-las-variables-de-temperatura-para-cada-estación-group_by-summarize-y-across." class="level3">
+<h3 class="anchored" data-anchor-id="haga-un-sumarizado-de-promedio-mensual-de-las-variables-de-temperatura-para-cada-estación-group_by-summarize-y-across.">2.Haga un sumarizado de promedio mensual de las variables de temperatura para cada estación (group_by, summarize y across).</h3>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb38"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a>data_agro_promm <span class="ot">&lt;-</span></span>
+<span id="cb38-2"><a href="#cb38-2" aria-hidden="true" tabindex="-1"></a>  data_agro <span class="sc">|&gt;</span> </span>
+<span id="cb38-3"><a href="#cb38-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(station_id) <span class="sc">|&gt;</span></span>
+<span id="cb38-4"><a href="#cb38-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="fu">across</span>(<span class="fu">contains</span>(<span class="st">"temp"</span>),\(x) <span class="fu">mean</span>( x, <span class="at">na.rm =</span> T), <span class="at">.names =</span> <span class="st">"{.col}_avg"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="renombre-y-reordene-las-variables-como-temp_prom-temp_max-y-temp_min-rename_with-y-relocate" class="level3">
+<h3 class="anchored" data-anchor-id="renombre-y-reordene-las-variables-como-temp_prom-temp_max-y-temp_min-rename_with-y-relocate">3. Renombre y reordene las variables como temp_prom, temp_max y Temp_min (rename_with y `relocate``)</h3>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb39"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb39-1"><a href="#cb39-1" aria-hidden="true" tabindex="-1"></a>data_agro_prom_names <span class="ot">&lt;-</span> data_agro_promm <span class="sc">|&gt;</span> </span>
+<span id="cb39-2"><a href="#cb39-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rename_with</span>(<span class="fu">contains</span>(<span class="st">"temp"</span>),<span class="at">.fn =</span> \(x) <span class="fu">substr</span>(x, <span class="at">start =</span><span class="dv">1</span>,<span class="at">stop =</span><span class="dv">8</span>))</span>
+<span id="cb39-3"><a href="#cb39-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb39-4"><a href="#cb39-4" aria-hidden="true" tabindex="-1"></a>data_agro_prom_names</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 137 × 4
+   station_id temp_pro temp_min temp_max
+        &lt;dbl&gt;    &lt;dbl&gt;    &lt;dbl&gt;    &lt;dbl&gt;
+ 1          2     18.3     18.1     18.6
+ 2          4     15.4     14.7     16.1
+ 3          7    NaN      NaN      NaN  
+ 4          9     17.4     16.7     18.1
+ 5         10     15.6     15.0     16.1
+ 6         11     15.8     15.1     16.5
+ 7         12     19.3     18.5     20.1
+ 8         15     16.3     15.7     16.9
+ 9         20     15.5     14.9     16.1
+10         26     15.7     14.9     16.5
+# … with 127 more rows</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb41"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb41-1"><a href="#cb41-1" aria-hidden="true" tabindex="-1"></a>data_agro_prom_names <span class="sc">|&gt;</span></span>
+<span id="cb41-2"><a href="#cb41-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">relocate</span>(temp_max, <span class="at">.after =</span> temp_pro) <span class="sc">|&gt;</span></span>
+<span id="cb41-3"><a href="#cb41-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">relocate</span>(temp_min, <span class="at">.after =</span> <span class="fu">last_col</span>())</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 137 × 4
+   station_id temp_pro temp_max temp_min
+        &lt;dbl&gt;    &lt;dbl&gt;    &lt;dbl&gt;    &lt;dbl&gt;
+ 1          2     18.3     18.6     18.1
+ 2          4     15.4     16.1     14.7
+ 3          7    NaN      NaN      NaN  
+ 4          9     17.4     18.1     16.7
+ 5         10     15.6     16.1     15.0
+ 6         11     15.8     16.5     15.1
+ 7         12     19.3     20.1     18.5
+ 8         15     16.3     16.9     15.7
+ 9         20     15.5     16.1     14.9
+10         26     15.7     16.5     14.9
+# … with 127 more rows</code></pre>
+</div>
+</div>
+</section>
+<section id="cree-las-columnas-var_temp-y-temp-en-formato-largo-que-contenga-las-variables-de-temp_prom-temp_max-y-temp_min-y-sus-valores.-pivot_longer" class="level3">
+<h3 class="anchored" data-anchor-id="cree-las-columnas-var_temp-y-temp-en-formato-largo-que-contenga-las-variables-de-temp_prom-temp_max-y-temp_min-y-sus-valores.-pivot_longer">4. Cree las columnas var_temp y temp, en formato largo que contenga las variables de temp_prom, temp_max y Temp_min y sus valores. (pivot_longer)</h3>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb43"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb43-1"><a href="#cb43-1" aria-hidden="true" tabindex="-1"></a>data_pivot_longer <span class="ot">&lt;-</span> data_agro_prom_names<span class="sc">|&gt;</span></span>
+<span id="cb43-2"><a href="#cb43-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pivot_longer</span>(<span class="dv">2</span><span class="sc">:</span><span class="dv">4</span>, <span class="at">names_to =</span> <span class="st">'var_temp'</span>, <span class="at">values_to =</span> <span class="st">'temp'</span>,) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="ordene-los-datos-anteriores-de-mayor-a-menor." class="level3">
+<h3 class="anchored" data-anchor-id="ordene-los-datos-anteriores-de-mayor-a-menor.">5.Ordene los datos anteriores de mayor a menor.</h3>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb44"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb44-1"><a href="#cb44-1" aria-hidden="true" tabindex="-1"></a>data_pivot_longer <span class="ot">&lt;-</span> data_agro_prom_names<span class="sc">|&gt;</span></span>
+<span id="cb44-2"><a href="#cb44-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pivot_longer</span>(<span class="dv">2</span><span class="sc">:</span><span class="dv">4</span>, <span class="at">names_to =</span> <span class="st">'var_temp'</span>, <span class="at">values_to =</span> <span class="st">'temp'</span>,) <span class="sc">|&gt;</span></span>
+<span id="cb44-3"><a href="#cb44-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">arrange</span>(<span class="fu">desc</span>(temp))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="vuelva-a-formato-ancho-los-datos-del-punto-anterior." class="level3">
+<h3 class="anchored" data-anchor-id="vuelva-a-formato-ancho-los-datos-del-punto-anterior.">6.Vuelva a formato ancho los datos del punto anterior.</h3>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb45"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb45-1"><a href="#cb45-1" aria-hidden="true" tabindex="-1"></a>data_pivot_wider <span class="ot">&lt;-</span> data_pivot_longer <span class="sc">|&gt;</span></span>
+<span id="cb45-2"><a href="#cb45-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pivot_wider</span>(<span class="at">names_from =</span> var_temp, <span class="at">values_from =</span> temp)  </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="caclule-cuantos-datos-no-faltantes-is.na-tiene-cada-estacion-para-cada-una-de-las-variables." class="level3">
+<h3 class="anchored" data-anchor-id="caclule-cuantos-datos-no-faltantes-is.na-tiene-cada-estacion-para-cada-una-de-las-variables.">7. Caclule cuantos datos no faltantes (!is.na) tiene cada estacion para cada una de las variables.</h3>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb46"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb46-1"><a href="#cb46-1" aria-hidden="true" tabindex="-1"></a>data_agro <span class="sc">|&gt;</span></span>
+<span id="cb46-2"><a href="#cb46-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(station_id, <span class="fu">contains</span>(<span class="st">'temp'</span>)) <span class="sc">|&gt;</span></span>
+<span id="cb46-3"><a href="#cb46-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pivot_longer</span>(<span class="dv">2</span><span class="sc">:</span><span class="dv">4</span>, <span class="at">names_to =</span> <span class="st">'var_temp'</span>, <span class="at">values_to =</span> <span class="st">'temp'</span>,) <span class="sc">|&gt;</span></span>
+<span id="cb46-4"><a href="#cb46-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(station_id, var_temp) <span class="sc">|&gt;</span></span>
+<span id="cb46-5"><a href="#cb46-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarize</span>(<span class="at">nas =</span> <span class="fu">sum</span>(<span class="fu">is.na</span>(temp)))<span class="sc">|&gt;</span></span>
+<span id="cb46-6"><a href="#cb46-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">glimpse</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>`summarise()` has grouped output by 'station_id'. You can override using the
+`.groups` argument.</code></pre>
+</div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Rows: 411
+Columns: 3
+Groups: station_id [137]
+$ station_id &lt;dbl&gt; 2, 2, 2, 4, 4, 4, 7, 7, 7, 9, 9, 9, 10, 10, 10, 11, 11, 11,…
+$ var_temp   &lt;chr&gt; "temp_maxima", "temp_minima", "temp_promedio_aire", "temp_m…
+$ nas        &lt;int&gt; 272, 272, 272, 131, 131, 131, 8736, 8736, 8736, 215, 215, 2…</code></pre>
+</div>
+</div>
+</section>
+</section>
+<section id="ejercicios-dplyr-parte-3" class="level2">
+<h2 class="anchored" data-anchor-id="ejercicios-dplyr-parte-3">4. Ejercicios {dplyr} {parte 3}</h2>
+<section id="con-los-datos-de-agromet-calcule-el-promedio-de-temperatura-media-máxima-mínima-por-día-y-estación.-utilice-summarize-y-across." class="level3">
+<h3 class="anchored" data-anchor-id="con-los-datos-de-agromet-calcule-el-promedio-de-temperatura-media-máxima-mínima-por-día-y-estación.-utilice-summarize-y-across.">1.Con los datos de agromet, calcule el promedio de temperatura (media, máxima, mínima) por día y estación. Utilice summarize y across.</h3>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb49"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb49-1"><a href="#cb49-1" aria-hidden="true" tabindex="-1"></a>data_agro_prom_4 <span class="ot">&lt;-</span></span>
+<span id="cb49-2"><a href="#cb49-2" aria-hidden="true" tabindex="-1"></a>  data_agro <span class="sc">|&gt;</span></span>
+<span id="cb49-3"><a href="#cb49-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(fecha_hora, station_id) <span class="sc">|&gt;</span></span>
+<span id="cb49-4"><a href="#cb49-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="fu">across</span>(<span class="fu">contains</span>(<span class="st">"temp"</span>),\(x) <span class="fu">mean</span>( x, <span class="at">na.rm =</span> T), <span class="at">.names =</span> <span class="st">"{.col}_avg"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>`summarise()` has grouped output by 'fecha_hora'. You can override using the
+`.groups` argument.</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb51"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb51-1"><a href="#cb51-1" aria-hidden="true" tabindex="-1"></a>data_agro_prom_4</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 1,196,832 × 5
+# Groups:   fecha_hora [8,736]
+   fecha_hora          station_id temp_promedio_aire_avg temp_minima_avg temp_…¹
+   &lt;dttm&gt;                   &lt;dbl&gt;                  &lt;dbl&gt;           &lt;dbl&gt;   &lt;dbl&gt;
+ 1 2021-01-01 03:00:00          2                   20.5            20.5    20.6
+ 2 2021-01-01 03:00:00          4                   14.3            14.2    14.4
+ 3 2021-01-01 03:00:00          7                  NaN             NaN     NaN  
+ 4 2021-01-01 03:00:00          9                   16.3            16.1    16.6
+ 5 2021-01-01 03:00:00         10                   16.5            15.7    17.4
+ 6 2021-01-01 03:00:00         11                   14              13.7    14.4
+ 7 2021-01-01 03:00:00         12                   15.5            15.3    15.8
+ 8 2021-01-01 03:00:00         15                  NaN             NaN     NaN  
+ 9 2021-01-01 03:00:00         20                   14.2            14.1    14.3
+10 2021-01-01 03:00:00         26                   14              13.4    14.9
+# … with 1,196,822 more rows, and abbreviated variable name ¹​temp_maxima_avg</code></pre>
+</div>
+</div>
+</section>
+</section>
+</section>
+
+</main>
+<!-- /main column -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    target: function(trigger) {
+      return trigger.previousElementSibling;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    setTimeout(function() {
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  function tippyHover(el, contentFn) {
+    const config = {
+      allowHTML: true,
+      content: contentFn,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start'
+    };
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      let href = ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const cites = ref.parentNode.getAttribute('data-cites').split(' ');
+    tippyHover(ref, function() {
+      var popup = window.document.createElement('div');
+      cites.forEach(function(cite) {
+        var citeDiv = window.document.createElement('div');
+        citeDiv.classList.add('hanging-indent');
+        citeDiv.classList.add('csl-entry');
+        var biblioDiv = window.document.getElementById('ref-' + cite);
+        if (biblioDiv) {
+          citeDiv.innerHTML = biblioDiv.innerHTML;
+        }
+        popup.appendChild(citeDiv);
+      });
+      return popup.innerHTML;
+    });
+  }
+});
+</script>
+</div> <!-- /content -->
+
+
+
+</body></html>
